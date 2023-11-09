@@ -1,13 +1,13 @@
 import Axios, { AxiosInstance } from 'axios';
 import { ApiError, ApiHeaders, IApiBase, ID } from './types';
+import environments from '@/utils/environment';
 
 export default class ApiBase<T> implements IApiBase<T> {
   public axiosInstance: AxiosInstance;
   protected baseApiUrl: string;
-  private headers?: ApiHeaders;
 
   constructor(baseApiUrl?: string, headers?: ApiHeaders) {
-    this.baseApiUrl = baseApiUrl || '';
+    this.baseApiUrl = baseApiUrl || String(environments.API_URL);
     this.axiosInstance = Axios.create({
       headers: {
         'Content-Type': 'application/json',
@@ -15,11 +15,6 @@ export default class ApiBase<T> implements IApiBase<T> {
         ...headers,
       },
     });
-    this.headers = {
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
-      ...headers,
-    };
   }
 
   protected isError(response: any): boolean {
@@ -63,7 +58,6 @@ export default class ApiBase<T> implements IApiBase<T> {
     try {
       const { data } = await this.axiosInstance.post(`${url}`, values, {
         headers: {
-          ...this.headers,
           ...headers,
         },
       });
@@ -81,7 +75,6 @@ export default class ApiBase<T> implements IApiBase<T> {
     try {
       const { data } = await this.axiosInstance.put(`${url}`, values, {
         headers: {
-          ...this.headers,
           ...headers,
         },
       });
@@ -100,7 +93,6 @@ export default class ApiBase<T> implements IApiBase<T> {
     try {
       const { data } = await this.axiosInstance.put(`${url}/${id}`, values, {
         headers: {
-          ...this.headers,
           ...headers,
         },
       });
