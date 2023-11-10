@@ -1,12 +1,11 @@
-import environments from "@/utils/environment";
 import ApiBase from "../base/apiBase";
-import { JobsI } from "@/core/interface/job";
+import { IJob } from "@/core/interface/job";
 import { ApiError } from "../base/types";
 
 export class JobService {
-    private static apiBase = new ApiBase<JobsI>();
+    private static apiBase = new ApiBase<IJob>();
 
-    public static async getJobs(): Promise<JobsI | ApiError> {
-      return await this.apiBase.postAsync(`${environments.API_URL}/en/jobs/find/results/`)
+    public static async getJobs(): Promise<IJob | ApiError> {
+      return await this.apiBase.postAsync(`/en/jobs/find/results/`)
     }
 }

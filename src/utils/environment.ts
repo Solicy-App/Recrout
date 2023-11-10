@@ -1,5 +1,7 @@
-const environments = {
-    API_URL: process.env.NEXT_PUBLIC_API_URL
-}
+import { EnvironmentType } from '@/core/types/environment';
 
-export default environments
+const environments: EnvironmentType = {
+  API_URL: String(process.env.NEXT_PUBLIC_API_URL),
+};
+
+export default environments;

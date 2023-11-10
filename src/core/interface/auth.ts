@@ -1,4 +1,4 @@
-interface AuthI {
+interface IAuth {
     first_name: string; 
     last_name: string; 
     email: string;
@@ -8,5 +8,5 @@ interface AuthI {
     remember_me: boolean;
 }
 
-export type SignInType = Pick<AuthI,'email' | 'password1'>
-export type SignUpType = AuthI
+export type SignInType = Pick<IAuth,'email' | 'password1'>
+export type SignUpType = IAuth

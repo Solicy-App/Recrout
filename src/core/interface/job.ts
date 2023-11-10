@@ -1,25 +1,25 @@
-export interface JobsI {
-    data: DataI;
+export interface IJob {
+    data: IJobData;
 }
 
-interface DataI {
-    data: JobsData
+interface IJobData {
+    data: IJobs
 }
 
-interface JobsData {
-    jobs: JobI[];
+interface IJobs {
+    jobs: IJobInfo[];
 }
 
-interface JobI {
+interface IJobInfo {
   culture_score: number;
-  data: JobDataI;
+  data: IJobInfoData;
   detail_url: string;
   pub_date: string;
   score: number;
   status: number;
 }
 
-interface JobDataI {
+interface IJobInfoData {
   company_name: string;
   job_id: string;
   mugshot: string;

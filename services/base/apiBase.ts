@@ -7,10 +7,11 @@ export default class ApiBase<T> implements IApiBase<T> {
   protected baseApiUrl: string;
 
   constructor(baseApiUrl?: string, headers?: ApiHeaders) {
-    this.baseApiUrl = baseApiUrl || String(environments.API_URL);
+    this.baseApiUrl = baseApiUrl || environments.API_URL;
     this.axiosInstance = Axios.create({
+      baseURL: this.baseApiUrl,
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'multipart/form-data',
         Accept: 'application/json',
         ...headers,
       },
@@ -41,7 +42,7 @@ export default class ApiBase<T> implements IApiBase<T> {
     }
   }
 
-  public async getAsync(url: string = this.baseApiUrl): Promise<T | ApiError> {
+  public async getAsync(url: string): Promise<T | ApiError> {
     try {
       const { data } = await this.axiosInstance.get(`${url}`);
       return data;
