@@ -1,25 +1,21 @@
 import Axios, { AxiosInstance } from 'axios';
 import { ApiError, ApiHeaders, IApiBase, ID } from './types';
+import environments from '@/utils/environment';
 
 export default class ApiBase<T> implements IApiBase<T> {
   public axiosInstance: AxiosInstance;
   protected baseApiUrl: string;
-  private headers?: ApiHeaders;
 
   constructor(baseApiUrl?: string, headers?: ApiHeaders) {
-    this.baseApiUrl = baseApiUrl || '';
+    this.baseApiUrl = baseApiUrl || environments.API_URL;
     this.axiosInstance = Axios.create({
+      baseURL: this.baseApiUrl,
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'multipart/form-data',
         Accept: 'application/json',
         ...headers,
       },
     });
-    this.headers = {
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
-      ...headers,
-    };
   }
 
   protected isError(response: any): boolean {
@@ -46,7 +42,7 @@ export default class ApiBase<T> implements IApiBase<T> {
     }
   }
 
-  public async getAsync(url: string = this.baseApiUrl): Promise<T | ApiError> {
+  public async getAsync(url: string): Promise<T | ApiError> {
     try {
       const { data } = await this.axiosInstance.get(`${url}`);
       return data;
@@ -63,7 +59,6 @@ export default class ApiBase<T> implements IApiBase<T> {
     try {
       const { data } = await this.axiosInstance.post(`${url}`, values, {
         headers: {
-          ...this.headers,
           ...headers,
         },
       });
@@ -81,7 +76,6 @@ export default class ApiBase<T> implements IApiBase<T> {
     try {
       const { data } = await this.axiosInstance.put(`${url}`, values, {
         headers: {
-          ...this.headers,
           ...headers,
         },
       });
@@ -100,7 +94,6 @@ export default class ApiBase<T> implements IApiBase<T> {
     try {
       const { data } = await this.axiosInstance.put(`${url}/${id}`, values, {
         headers: {
-          ...this.headers,
           ...headers,
         },
       });

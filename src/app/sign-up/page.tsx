@@ -1,17 +1,37 @@
 'use client';
-
-import React, { useState } from 'react';
-
+import React, { BaseSyntheticEvent, useState } from 'react';
+import { SignUpType } from '@/core/interface/auth';
+import { AuthService } from '../../../services/auth/auth';
 import './index.scss';
+import { resetForm } from '@/utils/reset-form';
 
 const SignUp: React.FC = () => {
-  const [email, setEmail] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
-  const [confirmPassword, setConfirmPassword] = useState<string>('');
+  const [creds, setCreds] = useState<SignUpType>({
+    email: '',
+    first_name: '',
+    last_name: '',
+    password1: '',
+    confirmPassword: '',
+    terms: true,
+    remember_me: false,
+  });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleInputChange = (e: BaseSyntheticEvent) => {
+    const { name, value } = e.target as HTMLInputElement;
+    setCreds(prevCreds => ({ ...prevCreds, [name]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // sign-up logic here
+
+    const signUpForm = Object.keys(creds).reduce((formData, key) => {
+      if (key !== 'confirmPassword') {
+        formData.append(key, (creds as any)[key]);
+      }
+      return formData;
+    }, new FormData());
+    await AuthService.signUp(signUpForm);
+    setCreds({...resetForm(creds)})
   };
 
   return (
@@ -20,12 +40,33 @@ const SignUp: React.FC = () => {
         <h2 className="title">Sign Up</h2>
         <form onSubmit={handleSubmit} className="form">
           <div className="form-group">
+            <label htmlFor="name">First Name:</label>
+            <input
+              type="text"
+              id="name"
+              name="first_name"
+              onChange={handleInputChange}
+              value={creds.first_name}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="surname">Last Name:</label>
+            <input
+              type="text"
+              id="surname"
+              name="last_name"
+              onChange={handleInputChange}
+              value={creds.last_name}
+            />
+          </div>
+          <div className="form-group">
             <label htmlFor="email">Email:</label>
             <input
               type="email"
               id="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              name="email"
+              onChange={handleInputChange}
+              value={creds.email}
               required
             />
           </div>
@@ -34,8 +75,9 @@ const SignUp: React.FC = () => {
             <input
               type="password"
               id="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              name="password1"
+              onChange={handleInputChange}
+              value={creds.password1}
               required
             />
           </div>
@@ -44,12 +86,17 @@ const SignUp: React.FC = () => {
             <input
               type="password"
               id="confirmPassword"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
+              name="confirmPassword"
+              onChange={handleInputChange}
+              value={creds.confirmPassword}
               required
             />
           </div>
-          <button type="submit" className="submit-button">
+          <button
+            onClick={handleSubmit}
+            type="submit"
+            className="submit-button"
+          >
             Sign Up
           </button>
         </form>
