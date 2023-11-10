@@ -59,8 +59,9 @@ export default class ApiBase<T> implements IApiBase<T> {
     try {
       const { data } = await this.axiosInstance.post(`${url}`, values, {
         headers: {
-          ...headers,
+          ...headers
         },
+        withCredentials: true,
       });
       return data;
     } catch (e) {

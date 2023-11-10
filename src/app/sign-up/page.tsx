@@ -12,7 +12,7 @@ const SignUp: React.FC = () => {
     last_name: '',
     password1: '',
     confirmPassword: '',
-    terms: true,
+    terms: false,
     remember_me: false,
   });
 

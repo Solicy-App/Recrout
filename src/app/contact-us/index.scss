@@ -1,0 +1,21 @@
+.contact {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    input {
+        height: 40px;
+        border: 1px solid;
+    }
+    textarea{
+        border: 1px solid;
+    }
+    label {
+        margin-top: 15px;
+    }
+    button {
+        height: 40px;
+        margin-top: 15px;
+        border: 1px solid;
+        background-color: aqua;
+    }
+}
