@@ -3,6 +3,7 @@ import React, { BaseSyntheticEvent, useState } from 'react';
 import { SignUpType } from '@/core/interface/auth';
 import { AuthService } from '../../../services/auth/auth';
 import './index.scss';
+import { resetForm } from '@/utils/reset-form';
 
 const SignUp: React.FC = () => {
   const [creds, setCreds] = useState<SignUpType>({
@@ -24,25 +25,15 @@ const SignUp: React.FC = () => {
     e.preventDefault();
 
     const signUpForm = Object.keys(creds).reduce((formData, key) => {
-      formData.append(key, (creds as any)[key]);
+      if (key !== 'confirmPassword') {
+        formData.append(key, (creds as any)[key]);
+      }
       return formData;
     }, new FormData());
-    
-
-    delete creds.confirmPassword;
-
     await AuthService.signUp(signUpForm);
-
-    setCreds({
-      first_name: '',
-      last_name: '',
-      email: '',
-      password1: '',
-      remember_me: false,
-      terms: false,
-      confirmPassword: '',
-    });
+    setCreds({...resetForm(creds)})
   };
+
   return (
     <div className="sign-up-page">
       <div className="form-container">

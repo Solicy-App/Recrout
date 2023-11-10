@@ -1,6 +1,6 @@
-import { EnvironmentType } from '@/core/types/environment';
+import { IEnvironment } from '@/core/interface/environment';
 
-const environments: EnvironmentType = {
+const environments: IEnvironment = {
   API_URL: String(process.env.NEXT_PUBLIC_API_URL),
 };
 
