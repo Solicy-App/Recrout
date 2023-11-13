@@ -1,9 +1,11 @@
 'use client';
-import React, { BaseSyntheticEvent, useState } from 'react';
+import React, { ChangeEvent, useState } from 'react';
 import { SignUpType } from '@/core/interface/auth';
 import { AuthService } from '../../../services/auth/auth';
 import { resetForm } from '@/utils/reset-form';
 import './index.scss';
+import { handleInputChange } from '@/helpers/inputHandler';
+import { formDataConverter } from '@/helpers/stateToFormData';
 
 const SignUp: React.FC = () => {
   const [creds, setCreds] = useState<SignUpType>({
@@ -16,20 +18,13 @@ const SignUp: React.FC = () => {
     remember_me: false,
   });
 
-  const handleInputChange = (e: BaseSyntheticEvent) => {
-    const { name, value } = e.target as HTMLInputElement;
-    setCreds(prevCreds => ({ ...prevCreds, [name]: value }));
-  };
+  const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
+    handleInputChange(e, setCreds)
+};
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
-    const signUpForm = Object.keys(creds).reduce((formData, key) => {
-      if (key !== 'confirmPassword') {
-        formData.append(key, (creds as any)[key]);
-      }
-      return formData;
-    }, new FormData());
+    const signUpForm = formDataConverter(creds, 'confirmPassword')
     await AuthService.signUp(signUpForm);
     setCreds({...resetForm(creds)})
   };
@@ -45,7 +40,7 @@ const SignUp: React.FC = () => {
               type="text"
               id="name"
               name="first_name"
-              onChange={handleInputChange}
+              onChange={handleInput}
               value={creds.first_name}
             />
           </div>
@@ -55,7 +50,7 @@ const SignUp: React.FC = () => {
               type="text"
               id="surname"
               name="last_name"
-              onChange={handleInputChange}
+              onChange={handleInput}
               value={creds.last_name}
             />
           </div>
@@ -65,7 +60,7 @@ const SignUp: React.FC = () => {
               type="email"
               id="email"
               name="email"
-              onChange={handleInputChange}
+              onChange={handleInput}
               value={creds.email}
               required
             />
@@ -76,7 +71,7 @@ const SignUp: React.FC = () => {
               type="password"
               id="password"
               name="password1"
-              onChange={handleInputChange}
+              onChange={handleInput}
               value={creds.password1}
               required
             />
@@ -87,7 +82,7 @@ const SignUp: React.FC = () => {
               type="password"
               id="confirmPassword"
               name="confirmPassword"
-              onChange={handleInputChange}
+              onChange={handleInput}
               value={creds.confirmPassword}
               required
             />
