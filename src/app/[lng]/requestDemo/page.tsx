@@ -3,7 +3,7 @@ import { NextPage } from 'next';
 import { useState, ChangeEvent } from 'react';
 import { IRequestDemo } from '@/core/interface/requestDemo';
 import { handleInputChange } from '@/helpers/inputHandler';
-import { RequestDemoService } from '../../../services/requestDemo/requestDemo';
+import { RequestDemoService } from '../../../../services/requestDemo/requestDemo';
 import { formDataConverter } from '@/helpers/stateToFormData';
 import { resetForm } from '@/utils/reset-form';
 import './index.scss';

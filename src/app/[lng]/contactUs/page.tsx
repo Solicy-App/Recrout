@@ -3,11 +3,11 @@
 import { IMessage } from '@/core/interface/contact';
 import { NextPage } from 'next';
 import { ChangeEvent, useState } from 'react';
-import { ContactService } from '../../../services/contact/contact';
 import { resetForm } from '@/utils/reset-form';
 import { handleInputChange } from '@/helpers/inputHandler';
 import { formDataConverter } from '@/helpers/stateToFormData';
 import './index.scss';
+import { ContactService } from '../../../../services/contact/contact';
 
 const ContactUs: NextPage = (): JSX.Element => {
   const [contact, setContact] = useState<IMessage>({

@@ -1,13 +1,15 @@
-'use client';
+'use client'
 import React, { ChangeEvent, useState } from 'react';
 import { SignUpType } from '@/core/interface/auth';
-import { AuthService } from '../../../services/auth/auth';
+import { AuthService } from '../../../../services/auth/auth';
 import { resetForm } from '@/utils/reset-form';
 import './index.scss';
 import { handleInputChange } from '@/helpers/inputHandler';
 import { formDataConverter } from '@/helpers/stateToFormData';
+import { useTranslation } from '../../i18n/client'
 
-const SignUp: React.FC = () => {
+const SignUp: React.FC<any> = ({ params:{ lng } }) => {
+  const { t } = useTranslation(lng, 'common')
   const [creds, setCreds] = useState<SignUpType>({
     email: '',
     first_name: '',
@@ -32,7 +34,8 @@ const SignUp: React.FC = () => {
   return (
     <div className="sign-up-page">
       <div className="form-container">
-        <h2 className="title">Sign Up</h2>
+        <h2 className="title">{t('sign_up')}</h2>
+        
         <form onSubmit={handleSubmit} className="form">
           <div className="form-group">
             <label htmlFor="name">First Name:</label>
