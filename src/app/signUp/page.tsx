@@ -18,11 +18,11 @@ const SignUp: React.FC = () => {
     remember_me: false,
   });
 
-  const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleInput = (e: ChangeEvent<HTMLInputElement>): void => {
     handleInputChange(e, setCreds)
 };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
     const signUpForm = formDataConverter(creds, 'confirmPassword')
     await AuthService.signUp(signUpForm);

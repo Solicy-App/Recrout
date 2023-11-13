@@ -17,11 +17,11 @@ const ContactUs: NextPage = (): JSX.Element => {
     phone: '',
   });
 
-  const handleInput = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInput = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
     handleInputChange(e, setContact);
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
     const contactForm = formDataConverter(contact)
     await ContactService.sendMessage(contactForm);
@@ -29,7 +29,6 @@ const ContactUs: NextPage = (): JSX.Element => {
   };
 
   return (
-
       <form className="contact" onSubmit={handleSubmit}>
         <label htmlFor="name">Name:</label>
         <input

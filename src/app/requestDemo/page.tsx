@@ -1,8 +1,8 @@
 'use client';
-import { IRequestDemo } from '@/core/interface/requestDemo';
-import { handleInputChange } from '@/helpers/inputHandler';
 import { NextPage } from 'next';
 import { useState,ChangeEvent, useEffect } from 'react';
+import { IRequestDemo } from '@/core/interface/requestDemo';
+import { handleInputChange } from '@/helpers/inputHandler';
 import { RequestDemoService } from '../../../services/requestDemo/requestDemo';
 import { formDataConverter } from '@/helpers/stateToFormData';
 import { resetForm } from '@/utils/reset-form';
@@ -14,19 +14,15 @@ const RequestDemo: NextPage = (): JSX.Element => {
     name: '',
     phone: '',
   });
-
-  useEffect(() => {
-    console.log(request)
-  }, [request])
   
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
     const formData = formDataConverter(request);
     await RequestDemoService.requestDemo(formData);
     resetForm(request);
   };
 
-  const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleInput = (e: ChangeEvent<HTMLInputElement>): void => {
         handleInputChange(e, setRequest)
   };
 
