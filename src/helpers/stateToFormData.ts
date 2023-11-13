@@ -2,14 +2,15 @@ export const formDataConverter = <T extends object>(
   state: T,
   excludeItem?: string,
 ) => {
-  const formData = Object.keys(state).reduce((acc, key) => {
-    if (excludeItem && key !== excludeItem) {
-      acc.append(key, (state as any)[key]);
-    } else {
-      acc.append(key, (state as any)[key]);
+  const formData = new FormData();
+
+  for (const key of Object.keys(state)) {
+    if (excludeItem && key === excludeItem) {
+      continue;
     }
-    return acc;
-  }, new FormData());
+
+    formData.append(key, (state as any)[key]);
+  }
 
   return formData;
 };
