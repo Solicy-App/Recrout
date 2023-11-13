@@ -1,6 +1,6 @@
 'use client';
 import { NextPage } from 'next';
-import { useState,ChangeEvent, useEffect } from 'react';
+import { useState, ChangeEvent } from 'react';
 import { IRequestDemo } from '@/core/interface/requestDemo';
 import { handleInputChange } from '@/helpers/inputHandler';
 import { RequestDemoService } from '../../../services/requestDemo/requestDemo';
@@ -14,7 +14,7 @@ const RequestDemo: NextPage = (): JSX.Element => {
     name: '',
     phone: '',
   });
-  
+
   const handleSubmit = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
     const formData = formDataConverter(request);
@@ -23,15 +23,32 @@ const RequestDemo: NextPage = (): JSX.Element => {
   };
 
   const handleInput = (e: ChangeEvent<HTMLInputElement>): void => {
-        handleInputChange(e, setRequest)
+    handleInputChange(e, setRequest);
   };
 
-  return <form className='request' onSubmit={handleSubmit}>
-    <input placeholder="name" name="name" type="text" onChange={handleInput} />
-    <input placeholder="email" name="email" type="email" onChange={handleInput} />
-    <input placeholder="phone" name="phone" type="text" onChange={handleInput} />
-    <button>Submit</button>
-  </form>;
+  return (
+    <form className="request" onSubmit={handleSubmit}>
+      <input
+        placeholder="name"
+        name="name"
+        type="text"
+        onChange={handleInput}
+      />
+      <input
+        placeholder="email"
+        name="email"
+        type="email"
+        onChange={handleInput}
+      />
+      <input
+        placeholder="phone"
+        name="phone"
+        type="text"
+        onChange={handleInput}
+      />
+      <button>Submit</button>
+    </form>
+  );
 };
 
 export default RequestDemo;
