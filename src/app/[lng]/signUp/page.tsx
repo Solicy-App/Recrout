@@ -3,10 +3,10 @@ import React, { ChangeEvent, useState } from 'react';
 import { SignUpType } from '@/core/interface/auth';
 import { AuthService } from '../../../../services/auth/auth';
 import { resetForm } from '@/utils/reset-form';
-import './index.scss';
 import { handleInputChange } from '@/helpers/inputHandler';
 import { formDataConverter } from '@/helpers/stateToFormData';
 import { useTranslation } from '../../i18n/client'
+import './index.scss';
 
 const SignUp: React.FC<any> = ({ params:{ lng } }) => {
   const { t } = useTranslation(lng, 'common')
