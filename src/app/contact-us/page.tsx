@@ -6,6 +6,7 @@ import { BaseSyntheticEvent, useState } from 'react';
 import { ContactService } from '../../../services/contact/contact';
 import { resetForm } from '@/utils/reset-form';
 import './index.scss'
+
 const ContactUs: NextPage = (): JSX.Element => {
   const [contact, setContact] = useState<IMessage>({
     email: '',

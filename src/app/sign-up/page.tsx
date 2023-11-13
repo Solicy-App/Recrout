@@ -2,8 +2,8 @@
 import React, { BaseSyntheticEvent, useState } from 'react';
 import { SignUpType } from '@/core/interface/auth';
 import { AuthService } from '../../../services/auth/auth';
-import './index.scss';
 import { resetForm } from '@/utils/reset-form';
+import './index.scss';
 
 const SignUp: React.FC = () => {
   const [creds, setCreds] = useState<SignUpType>({
