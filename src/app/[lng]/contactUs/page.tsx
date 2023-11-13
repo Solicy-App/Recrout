@@ -6,8 +6,8 @@ import { ChangeEvent, useState } from 'react';
 import { resetForm } from '@/utils/reset-form';
 import { handleInputChange } from '@/helpers/inputHandler';
 import { formDataConverter } from '@/helpers/stateToFormData';
-import './index.scss';
 import { ContactService } from '../../../../services/contact/contact';
+import './index.scss';
 
 const ContactUs: NextPage = (): JSX.Element => {
   const [contact, setContact] = useState<IMessage>({
