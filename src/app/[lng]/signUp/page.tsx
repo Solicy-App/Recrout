@@ -6,9 +6,11 @@ import { resetForm } from '@/utils/reset-form';
 import { handleInputChange } from '@/helpers/inputHandler';
 import { formDataConverter } from '@/helpers/stateToFormData';
 import { useTranslation } from '../../i18n/client'
+import { Formik, Form } from 'formik';
+import FormField from '@/components/FormField/Index';
+import validation from './form-validation';
 import './index.scss';
 import Button from '@/components/Button/Index';
-
 const SignUp: React.FC<any> = ({ params:{ lng } }) => {
   const { t } = useTranslation(lng, 'common')
   const [creds, setCreds] = useState<SignUpType>({
@@ -35,63 +37,17 @@ const SignUp: React.FC<any> = ({ params:{ lng } }) => {
     <div className="sign-up-page">
       <div className="form-container">
         <h2 className="title">{t('sign_up')}</h2>
-        <form onSubmit={handleSubmit} className="form">
-          <div className="form-group">
-            <label htmlFor="name">First Name:</label>
-            <input
-              type="text"
-              id="name"
-              name="first_name"
-              onChange={handleInput}
-              value={creds.first_name}
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="surname">Last Name:</label>
-            <input
-              type="text"
-              id="surname"
-              name="last_name"
-              onChange={handleInput}
-              value={creds.last_name}
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="email">Email:</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              onChange={handleInput}
-              value={creds.email}
-              required
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="password">Password:</label>
-            <input
-              type="password"
-              id="password"
-              name="password1"
-              onChange={handleInput}
-              value={creds.password1}
-              required
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="confirmPassword">Confirm Password:</label>
-            <input
-              type="password"
-              id="confirmPassword"
-              name="confirmPassword"
-              onChange={handleInput}
-              value={creds.confirmPassword}
-              required
-            />
-          </div>
-          <Button className="submit-button" onClick={handleSubmit} title={'sign_up'} lang={lng}/>
-
-        </form>
+        <Formik initialValues={creds} validateOnChange={true} validate={(values) => validation(values)} onSubmit={(values, actions) => {console.log({values, actions})}}>
+          <Form>
+            <FormField lang={lng} fieldName='first_name' type='text'/>
+            <FormField lang={lng} fieldName='last_name' type='text'/>
+            <FormField lang={lng} fieldName='email' type='text'/>
+            <FormField lang={lng} fieldName='password1' type='text'/>
+            <FormField lang={lng} fieldName='confirmPassword' type='text'/>
+            <button type="submit">Submit</button>
+          </Form>
+          
+        </Formik>
       </div>
     </div>
   );

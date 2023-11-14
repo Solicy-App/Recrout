@@ -26,26 +26,18 @@
   flex-direction: column;
 }
 
-.form-group {
-  margin-bottom: 15px;
-  text-align: left;
 
-  label {
-    font-size: 0.9rem;
-    margin-bottom: 5px;
-  }
+input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  background-color: #fff;
 
-  input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 0.9rem;
-    background-color: #fff;
-    &.terms-checkbox {
-      width: 15px;
-      height: 15px;
-    }
+  &.terms-checkbox {
+    width: 15px;
+    height: 15px;
   }
 }
 
@@ -61,10 +53,12 @@
   &:hover {
     background-color: #0056b3;
   }
+
   .css-18lrjg1-MuiCircularProgress-root {
     color: white;
   }
 }
+
 .terms-services {
   color: #0056b3;
 }
