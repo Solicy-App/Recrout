@@ -7,7 +7,7 @@ Install Husky to enable the pre-commit hooks - `npm run prepare`
 
 In the project directory, you can run:
 
-### `npm run dev`
+### `npm run  dev` or `yarn run dev`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
@@ -17,9 +17,7 @@ You will also see any lint errors in the console.
 
 ### `npm test`
 
-Launches the all tests we have in this template (integration, unit).
-
-to launch E2E tests please run ```npm run cy:open``` this command will open a window where you can follow by passing or failing in e2e tests
+Launches the all tests we have in this template (e2e, integration, unit).
 
 ### `npm run build`
 
@@ -30,6 +28,16 @@ The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### `npm run eject`
+
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
 ## Testing
 
@@ -60,19 +68,6 @@ Run JEST unit tests using `npm run test` (It will run itself when trying to comm
 
     1. Always be clear when naming variables. Use naming styles like camel-case. Caution: If you started your project naming your variables with one style. Continue with that one. Don’t mess the code.
     2. Variable, function names should always showcase what that variable or function is doing. Something like this is inappropriate: let a = 1; function b() {}.
-
-## Translation:
-We're using ```i18n``` package for translations. To translate the text please at first import ```useTranslation``` hook from ```i18n/client``` the gook returns an async function called ```"t"``` also the hooks accepts two arguments first one called ```lng``` which comes from props of components and second one is the file name from where the translation will be performed. make sure to add translations in the correct folder. ```src/app/i18n/locales``` here you will find two folders called 'EN' and 'DE' inside which existing one or many json files, there we will add our translations for english and deutch.
-
-**Simple usage**
-```
-import { useTranslation } from '../../i18n/client';
-
-const ComponentName: NextPage<any> = ({ params:{ lng } }) => {
-    const { t } = useTranslation(lng, 'common');
-    return <h1>{t('key')}</h1>
-}
-```
 
 ## Pre Commit
     Please Run (npm run cy:run) for e2e tests before commit!
