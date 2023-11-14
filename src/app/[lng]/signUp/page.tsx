@@ -7,6 +7,7 @@ import { handleInputChange } from '@/helpers/inputHandler';
 import { formDataConverter } from '@/helpers/stateToFormData';
 import { useTranslation } from '../../i18n/client'
 import './index.scss';
+import Button from '@/components/Button/Index';
 
 const SignUp: React.FC<any> = ({ params:{ lng } }) => {
   const { t } = useTranslation(lng, 'common')
@@ -25,7 +26,6 @@ const SignUp: React.FC<any> = ({ params:{ lng } }) => {
 };
 
   const handleSubmit = async (e: React.FormEvent): Promise<void> => {
-    e.preventDefault();
     const signUpForm = formDataConverter(creds, 'confirmPassword')
     await AuthService.signUp(signUpForm);
     setCreds({...resetForm(creds)})
@@ -35,7 +35,6 @@ const SignUp: React.FC<any> = ({ params:{ lng } }) => {
     <div className="sign-up-page">
       <div className="form-container">
         <h2 className="title">{t('sign_up')}</h2>
-        
         <form onSubmit={handleSubmit} className="form">
           <div className="form-group">
             <label htmlFor="name">First Name:</label>
@@ -90,13 +89,8 @@ const SignUp: React.FC<any> = ({ params:{ lng } }) => {
               required
             />
           </div>
-          <button
-            onClick={handleSubmit}
-            type="submit"
-            className="submit-button"
-          >
-            Sign Up
-          </button>
+          <Button className="submit-button" onClick={handleSubmit} title={'sign_up'} lang={lng}/>
+
         </form>
       </div>
     </div>
