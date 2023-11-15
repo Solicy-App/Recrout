@@ -26,11 +26,7 @@ const FormField: FC<FormFieldType> = ({
         name={fieldName}
         placeholder={placeholder}
       />
-      {!errorMessage ? (
-        <ErrorMessage className="message" name={fieldName} component="div" />
-      ) : (
-        <div className="message">{errorMessage}</div>
-      )}
+      <ErrorMessage className="message" name={fieldName} component="div" />
     </div>
   );
 };

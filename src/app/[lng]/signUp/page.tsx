@@ -5,7 +5,7 @@ import { AuthService } from '../../../../services/auth/auth';
 import { formDataConverter } from '@/helpers/stateToFormData';
 import { useTranslation } from '../../i18n/client'
 import { Formik, Form, FormikHelpers } from 'formik';
-import { validation, initialValues } from './form-validation';
+import { validation, initialValues } from './form';
 import { InputType } from '@/core/enum/inputType';
 import FormField from '@/components/FormField/Index';
 import Button from '@/components/Button/Index';
@@ -25,7 +25,7 @@ const SignUp: React.FC<any> = ({ params:{ lng } }) => {
     <div className="sign-up-page">
       <div className="form-container">
         <h2 className="title">{t('sign_up')}</h2>
-        <Formik initialValues={initialValues} validateOnChange={true} validate={(values) => validation(values)} onSubmit={(values, FormEvent) => handleSubmit(values,FormEvent)}>
+        <Formik initialValues={initialValues} validationSchema={validation} onSubmit={(values, FormEvent) => handleSubmit(values,FormEvent)}>
           <Form>
             <FormField fieldName='first_name' type={InputType.text} placeholder='First name'/>
             <FormField fieldName='last_name' type={InputType.text} placeholder='Last name'/>
