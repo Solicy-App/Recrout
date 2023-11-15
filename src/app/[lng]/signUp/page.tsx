@@ -27,11 +27,11 @@ const SignUp: React.FC<any> = ({ params:{ lng } }) => {
         <h2 className="title">{t('sign_up')}</h2>
         <Formik initialValues={initialValues} validationSchema={validation} onSubmit={(values, FormEvent) => handleSubmit(values,FormEvent)}>
           <Form>
-            <FormField fieldName='first_name' type={InputType.text} placeholder='First name'/>
-            <FormField fieldName='last_name' type={InputType.text} placeholder='Last name'/>
-            <FormField fieldName='email' type={InputType.email} placeholder='Email'/>
-            <FormField fieldName='password1' type={InputType.password} placeholder='Password'/>
-            <FormField fieldName='confirmPassword' type={InputType.password} placeholder='Confirm password'/>
+            <FormField fieldName='first_name' type={InputType.text} placeholder={t('first_name')}/>
+            <FormField fieldName='last_name' type={InputType.text} placeholder={t('last_name')}/>
+            <FormField fieldName='email' type={InputType.email} placeholder={t('email')}/>
+            <FormField fieldName='password1' type={InputType.password} placeholder={t('password')}/>
+            <FormField fieldName='confirmPassword' type={InputType.password} placeholder={t('confirm_password')}/>
             <Button lang={lng} title='sign_up' type='submit' className='submit-button'/>
           </Form>
         </Formik>

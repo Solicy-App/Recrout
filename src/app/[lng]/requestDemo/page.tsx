@@ -6,11 +6,14 @@ import { RequestDemoService } from '../../../../services/requestDemo/requestDemo
 import { formDataConverter } from '@/helpers/stateToFormData';
 import { validation, initialValues } from './form';
 import { InputType } from '@/core/enum/inputType';
+import { useTranslation } from '@/app/i18n/client';
 import FormField from '@/components/FormField/Index';
 import Button from '@/components/Button/Index';
 import './index.scss';
 
 const RequestDemo: FC<any> = ({ params: { lng } }): JSX.Element => {
+  const { t } = useTranslation(lng, 'common')
+
   const handleSubmit = async (
     values: IRequestDemo,
     e: FormikHelpers<any>,
@@ -27,16 +30,16 @@ const RequestDemo: FC<any> = ({ params: { lng } }): JSX.Element => {
       onSubmit={(values, FormEvent) => handleSubmit(values, FormEvent)}
     >
       <Form>
-        <FormField fieldName="name" type={InputType.text} placeholder="Name" />
+        <FormField fieldName="name" type={InputType.text} placeholder={t('name')} />
         <FormField
           fieldName="email"
           type={InputType.email}
-          placeholder="Email"
+          placeholder={t('email')}
         />
         <FormField
           fieldName="phone"
           type={InputType.text}
-          placeholder="Phone"
+          placeholder={t('phone')}
         />
         <Button
           lang={lng}
