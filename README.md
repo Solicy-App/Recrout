@@ -2,6 +2,9 @@
 
 Install all project dependencies - `npm install`
 Install Husky to enable the pre-commit hooks - `npm run prepare`
+## Required version of node js
+
+``Node js`` version should be ``20`` or higher
 
 ## Available Scripts
 
