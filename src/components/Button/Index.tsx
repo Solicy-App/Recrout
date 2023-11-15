@@ -5,8 +5,9 @@ import './Index.scss';
 
 type buttonType = {
   title: string;
-  onClick: (event?: any) => void;
+  onClick?: (event?: any) => void;
   lang: string;
+  type: "button" | "submit" | "reset" | undefined;
   className?: string;
   disabled?: boolean;
   isLoading?: boolean;
@@ -18,16 +19,18 @@ const Button: FC<buttonType> = ({
   className,
   disabled,
   lang,
-  isLoading
+  isLoading,
+  type
 }): JSX.Element => {
   const { t } = useTranslation(lang, 'common');
-  const handleClick = (e: SyntheticEvent) => {
-    e.preventDefault();
-    onClick();
+  const handleClick = () => {
+    if (onClick) onClick();
+    
   };
 
   return (
     <button
+      type={type}
       disabled={disabled}
       className={`${className} btn`}
       onClick={handleClick}

@@ -1,21 +1,38 @@
-import { FC } from "react";
+import { FC } from 'react';
 import { Field, ErrorMessage } from 'formik';
-import { InputType } from "zlib";
-import { useTranslation } from '../../app/i18n/client';
+import { InputType } from '@/core/enum/inputType';
+import './Index.scss';
 
 type FormFieldType = {
-    type: InputType,
-    fieldName: string;
-    lang: string;
-}
+  type: InputType;
+  fieldName: string;
+  placeholder: string;
+  errorMessage?: boolean;
+  className?: string;
+};
 
-const FormField:FC<FormFieldType> = ({ fieldName, lang, type }): JSX.Element => {
-    const { t } = useTranslation(lang, 'common');
+const FormField: FC<FormFieldType> = ({
+  fieldName,
+  type,
+  placeholder,
+  className,
+  errorMessage,
+}): JSX.Element => {
+  return (
+    <div className={className ?? 'field'}>
+      <Field
+        className={errorMessage ? 'error' : ''}
+        type={type}
+        name={fieldName}
+        placeholder={placeholder}
+      />
+      {!errorMessage ? (
+        <ErrorMessage className="message" name={fieldName} component="div" />
+      ) : (
+        <div className="message">{errorMessage}</div>
+      )}
+    </div>
+  );
+};
 
-    return <>
-            <Field type={type} name={fieldName}/>
-        <ErrorMessage name={fieldName} component="div" />
-        </>
-}
-
-export default FormField
+export default FormField;

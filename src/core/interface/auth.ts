@@ -4,7 +4,7 @@ interface IAuth {
     email: string;
     password1: string;
     terms: boolean;
-    confirmPassword?: string;
+    confirmPassword: string;
     remember_me: boolean;
 }
 

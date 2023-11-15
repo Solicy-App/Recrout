@@ -15,4 +15,8 @@ export class Validator {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return emailRegex.test(value);
     }
+
+    public static repeatPassowrd(password: string, repeat: string): boolean {
+        return password === repeat
+    }
 }

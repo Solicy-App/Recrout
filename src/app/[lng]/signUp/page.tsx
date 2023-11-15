@@ -1,52 +1,39 @@
 'use client'
-import React, { ChangeEvent, useState } from 'react';
+import React from 'react';
 import { SignUpType } from '@/core/interface/auth';
 import { AuthService } from '../../../../services/auth/auth';
-import { resetForm } from '@/utils/reset-form';
-import { handleInputChange } from '@/helpers/inputHandler';
 import { formDataConverter } from '@/helpers/stateToFormData';
 import { useTranslation } from '../../i18n/client'
-import { Formik, Form } from 'formik';
+import { Formik, Form, FormikHelpers } from 'formik';
+import { validation, initialValues } from './form-validation';
+import { InputType } from '@/core/enum/inputType';
 import FormField from '@/components/FormField/Index';
-import validation from './form-validation';
-import './index.scss';
 import Button from '@/components/Button/Index';
+import './index.scss';
+
 const SignUp: React.FC<any> = ({ params:{ lng } }) => {
   const { t } = useTranslation(lng, 'common')
-  const [creds, setCreds] = useState<SignUpType>({
-    email: '',
-    first_name: '',
-    last_name: '',
-    password1: '',
-    confirmPassword: '',
-    terms: false,
-    remember_me: false,
-  });
 
-  const handleInput = (e: ChangeEvent<HTMLInputElement>): void => {
-    handleInputChange(e, setCreds)
-};
-
-  const handleSubmit = async (e: React.FormEvent): Promise<void> => {
-    const signUpForm = formDataConverter(creds, 'confirmPassword')
+  const handleSubmit = async (values: SignUpType, e: FormikHelpers<any>): Promise<void> => {
+    
+    const signUpForm = formDataConverter(values, 'confirmPassword')
     await AuthService.signUp(signUpForm);
-    setCreds({...resetForm(creds)})
+    e.resetForm()
   };
 
   return (
     <div className="sign-up-page">
       <div className="form-container">
         <h2 className="title">{t('sign_up')}</h2>
-        <Formik initialValues={creds} validateOnChange={true} validate={(values) => validation(values)} onSubmit={(values, actions) => {console.log({values, actions})}}>
+        <Formik initialValues={initialValues} validateOnChange={true} validate={(values) => validation(values)} onSubmit={(values, FormEvent) => handleSubmit(values,FormEvent)}>
           <Form>
-            <FormField lang={lng} fieldName='first_name' type='text'/>
-            <FormField lang={lng} fieldName='last_name' type='text'/>
-            <FormField lang={lng} fieldName='email' type='text'/>
-            <FormField lang={lng} fieldName='password1' type='text'/>
-            <FormField lang={lng} fieldName='confirmPassword' type='text'/>
-            <button type="submit">Submit</button>
+            <FormField fieldName='first_name' type={InputType.text} placeholder='First name'/>
+            <FormField fieldName='last_name' type={InputType.text} placeholder='Last name'/>
+            <FormField fieldName='email' type={InputType.email} placeholder='Email'/>
+            <FormField fieldName='password1' type={InputType.password} placeholder='Password'/>
+            <FormField fieldName='confirmPassword' type={InputType.password} placeholder='Confirm password'/>
+            <Button lang={lng} title='sign_up' type='submit' className='submit-button'/>
           </Form>
-          
         </Formik>
       </div>
     </div>
