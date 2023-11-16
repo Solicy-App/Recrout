@@ -1,3 +1,14 @@
 {
-  "sign_up": "Sign Up"
+  "sign_up": "Sign Up",
+  "first_name": "First name",
+  "full_name": "Full Name",
+  "last_name": "Last name",
+  "email": "Email",
+  "password": "Password",
+  "confirm_password": "Confirm password",
+  "phone": "Phone",
+  "message": "Message",
+  "name": "Name",
+  "website": "Website",
+  "required": "hajoxlan"
 }

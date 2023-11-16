@@ -1,3 +1,14 @@
 {
-  "sign_up": "Anmelden"
+  "sign_up": "Anmelden",
+  "first_name": "Vorname",
+  "full_name": "Vollständiger Name",
+  "last_name": "Nachname",
+  "email": "Email",
+  "password": "Passwort",
+  "confirm_password": "Passwort bestätigen",
+  "phone": "Telefon",
+  "message": "Nachricht",
+  "name": "Name",
+  "website": "Website",
+  "required": "hajox"
 }
