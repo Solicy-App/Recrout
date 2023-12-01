@@ -1,0 +1,19 @@
+.field {
+    position: relative;
+    margin-bottom: 20px;
+    background-color: #FFFFFF;
+
+    .error {
+        border-color: red;
+    }
+
+    .message {
+        font-size: 12px;
+        color: rgb(167, 27, 27);
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        transform: translate(12%, 50%);
+        background-color: #FFFFFF;
+    }
+}

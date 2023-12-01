@@ -1,0 +1,352 @@
+@import '../../../assets/variables/colors.scss';
+
+.dashboard {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    &__left {
+        border-radius: 6px;
+        width: 300px;
+        padding-top: 15px;
+        background-color: $white;
+
+        &__content {
+            padding: 15px 25px;
+        }
+
+        &__image {
+            position: relative;
+            margin-bottom: 15px;
+            width: 278px;
+            margin: auto;
+            text-align: center;
+            &-img {
+                margin: auto;
+            }
+
+            &-edit {
+                display: block;
+                width: 36px;
+                height: 36px;
+                border-radius: 50%;
+                background-color: $light-purple;
+                position: absolute;
+                right: 0;
+                top: 0;
+                transform: translate(-45px, 12px);
+                cursor: pointer;
+
+                &-pen {
+                    position: absolute;
+                    left: 50%;
+                    top: 50%;
+                    transform: translate(-50%, -50%);
+                }
+            }
+        }
+
+        &__swiper {
+            width: 100%;
+            background-color: $light-purple;
+            border-radius: 32px;
+            height: 34px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 5px;
+
+            &-btn {
+                text-align: center;
+                display: block;
+                width: 48%;
+                border-radius: 45px;
+                transition: all .5s;
+                cursor: pointer;
+                color: $soft-purple;
+                padding: 5px 6px;
+                &:hover {
+                    color: $white;
+                    background-color: $purple;
+                }
+
+                &.active {
+                    color: $white;
+                    background-color: $purple;
+                }
+            }
+        }
+
+        &__link {
+            position: relative;
+            border: 1px solid $border;
+            height: 34px;
+            border-radius: 3px;
+            display: flex;
+            align-items: center;
+            background-color: $light-purple;
+            margin-top: 27px;
+
+            &-input {
+                width: 87%;
+                background-color: transparent;
+                color: $black;
+                cursor: copy;
+                outline: none;
+                padding: 14px;
+                border: 0;
+            }
+
+            &-refresh {
+                position: absolute;
+                right: 0;
+                top: 0;
+                transform: translate(-13px, 11px);
+                cursor: pointer;
+            }
+        }
+
+        &-dropdown {
+            margin-top: 27px;
+            width: 100%;
+            height: 34px;
+            border: 1px solid $border;
+            border-color: $border;
+            background-color: $light-purple;
+            outline: none;
+            color: $black;
+
+            fieldset {
+                border: none;
+            }
+        }
+
+        &__contact {
+            margin-top: 41px;
+            font-size: 12px;
+
+            &__user {
+                display: flex;
+                align-items: center;
+                margin-bottom: 15px;
+
+                &__icon {
+                    margin-right: 10px;
+                    width: 26px;
+                    height: 26px;
+                    border-radius: 50%;
+                    background-color: $light-purple;
+                    position: relative;
+
+                    &-img {
+                        position: absolute;
+                        left: 50%;
+                        top: 50%;
+                        transform: translate(-50%, -50%);
+                    }
+                }
+            }
+        }
+
+        &__social {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            &-icons {
+                margin-right: 20px;
+
+                &:last-child {
+                    margin: 0;
+                }
+            }
+        }
+
+        &__actions {
+            display: flex;
+            flex-direction: column;
+            margin-top: 47px;
+
+            button {
+                color: $white;
+                font-weight: 500;
+                border-radius: 9px;
+                height: 47px;
+                margin-bottom: 15px;
+
+                .btn-icon {
+                    margin-right: 10px;
+                }
+            }
+
+            &-purple {
+                background-color: $purple;
+
+                &:hover {
+                    background-color: $purple;
+                }
+            }
+
+            &-sky {
+                background-color: $sky-blue;
+
+                &:hover {
+                    background-color: $sky-blue;
+                }
+            }
+
+            &-green {
+                background-color: $green;
+
+                &:hover {
+                    background-color: $green;
+                }
+            }
+        }
+    }
+
+    &__right {
+        margin-left: 15px;
+        width: 80%;
+        border-radius: 6px;
+
+        &__top {
+            border-radius: 6px;
+            padding: 20px;
+            background-color: $white;
+            display: flex;
+            justify-content: space-between;
+
+            &__left {
+                width: 48%;
+
+                &-title {
+                    display: flex;
+                    font-size: 20px;
+                    font-weight: 600;
+                }
+
+                &-desc {
+                    color: $black;
+                    opacity: 0.5;
+                    margin-top: 10px;
+                }
+
+                &__email {
+                    display: flex;
+                    align-items: center;
+                    margin-top: 10px;
+
+                    &-email {
+                        height: 34px;
+                        text-indent: 10px;
+                        border-radius: 3px 0px 0px 3px;
+                        border: 1px solid $border;
+                        background: $body;
+                        outline: none;
+                        width: 350px;
+                    }
+
+                    &-submit {
+                        width: 115px;
+                        height: 34px;
+                        border-radius: 0 9px 9px 0;
+                        background-color: $purple;
+                        border: 1px solid $purple;
+                        color: $white;
+                        font-size: 14px;
+                        font-weight: 500;
+
+                        &:hover {
+                            background-color: $white;
+                            color: $purple;
+                        }
+                    }
+                }
+            }
+
+            &__right {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+
+                &__button {
+                    border-radius: 9px;
+                    color: $purple;
+                    background-color: $light-rose;
+
+                    &:hover {
+                        border: 1px solid $light-rose;
+                        background-color: transparent;
+                    }
+
+                    &.app {
+                        width: 236px;
+                        height: 47px;
+                        font-weight: 500;
+                    }
+
+                    &.job {
+                        margin-top: 20px;
+                        width: 150px;
+                        height: 47px;
+                        font-weight: 500;
+
+                        .btn-icon {
+                            margin-right: 20px;
+                        }
+                    }
+                }
+            }
+
+        }
+
+        &__bottom {
+            &__tabs {
+                &__header {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    background-color: $white;
+                    margin-top: 15px;
+                    padding: 10px 23px;
+                    margin-bottom: 15px;
+                    &__item {
+                        &-title {
+                            cursor: pointer;
+                            font-size: 16px;
+                            color: $black;
+                            position: relative;
+
+                            &.active {
+                                .line {
+                                    width: 100%;
+                                }
+                            }
+
+                            &:hover {
+                                .line {
+                                    width: 100%;
+                                }
+                            }
+
+                            .line {
+                                display: block;
+                                position: absolute;
+                                bottom: 0;
+                                left: 0;
+                                background-color: $purple;
+                                height: 4px;
+                                width: 100%;
+                                border-radius: 5px;
+                                transform: translateY(13px);
+                                transition: all .5s;
+                                width: 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,44 @@
+@import '../../assets/variables/colors.scss';
+
+.level {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+
+    &__icon__title {
+        display: flex;
+        align-items: center;
+
+        &-icon {
+            margin-right: 15px;
+            display: block;
+        }
+
+        &-title {
+            font-size: 14px;
+            font-weight: 500;
+            color: $black;
+            width: 150px;
+        }
+    }
+
+    .dots {
+        display: flex;
+        margin-left: auto;
+        width: 150px;
+
+        .dot {
+            display: block;
+            width: 15px;
+            height: 15px;
+            background-color: $gray;
+            border-radius: 50%;
+            margin-right: 5px;
+
+            &.marked {
+                background-color: $purple;
+            }
+        }
+    }
+
+}

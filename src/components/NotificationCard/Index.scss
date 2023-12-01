@@ -1,0 +1,40 @@
+@import '../../assets/variables/colors.scss';
+
+.card {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    .profile__dot {
+        width: 15px;
+        height: 15px;
+        transform: translateX(-3px);
+    }
+
+    &__right {
+        margin-left: 20px;
+        display: flex;
+        flex-direction: column;
+
+        &-sender {
+            color: $black;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        &-message {
+            color: $black;
+            font-weight: 400;
+            font-size: 14px;
+            width: 200px;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            word-break: keep-all;
+        }
+
+        &-date {
+            color: $gray;
+            font-size: 12px;
+        }
+    }
+}

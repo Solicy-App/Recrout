@@ -1,0 +1,38 @@
+@import '../../../../assets/variables/colors.scss';
+
+.confirm {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 25px;
+
+    &__desc {
+        font-weight: 400;
+        font-size: 16px;
+        color: $black;
+    }
+
+    &__buttons {
+        display: flex;
+        align-items: center;
+        margin-top: 25px;
+
+        &-btn {
+            width: 223px;
+            height: 54px;
+            font-size: 16px;
+            color: $white;
+            border-radius: 9px;
+            font-weight: 500;
+
+            &.no {
+                background-color: $warning;
+                margin-right: 10px;
+            }
+
+            &.yes {
+                background-color: $approve;
+            }
+        }
+    }
+}

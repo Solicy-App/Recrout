@@ -1,0 +1,212 @@
+@import '../../../../assets/variables/colors.scss';
+
+.dropdown {
+    background-color: $border;
+    border: 1px solid $light-rose;
+    height: 40px;
+
+}
+
+.about__popup {
+    &-title {
+        display: block;
+        text-align: center;
+        font-size: 24px;
+        color: $black;
+        font-weight: 600;
+    }
+
+    .save-btn {
+        width: 100%;
+        background-color: $purple;
+    }
+
+    form {
+        width: 100%;
+        margin-top: 25px;
+        height: 75vh;
+        overflow-y: auto;
+
+        .about-input {
+            width: 100%;
+            height: 40px;
+            background-color: $border;
+            border: 1px solid $light-rose;
+            text-indent: 15px;
+            outline: none;
+
+            &.pitch {
+                height: 80px;
+            }
+        }
+
+        .label {
+            margin-bottom: 5px;
+            color: $black;
+            font-size: 14px;
+            display: block;
+        }
+
+        .names {
+            display: flex;
+            align-items: center;
+
+            &__first {
+                width: 50%;
+                margin-right: 15px;
+            }
+        }
+
+        .contact {
+            display: flex;
+
+            .phone {
+                .phone_dropdown {
+                    height: 40px;
+                    width: 250px !important;
+                    background-color: $border;
+                    border: 1px solid $light-rose;
+
+                }
+
+                &.contact__val {
+                    width: 100%;
+                    margin-left: 15px;
+
+                }
+            }
+        }
+
+        .birthday {
+            .fields {
+                display: flex;
+                justify-content: space-between;
+
+                .birthday_dropdown {
+                    height: 40px;
+                    width: 33% !important;
+                    background-color: $border;
+                    border: 1px solid $light-rose;
+                    margin-right: 30px;
+
+                    &:last-child {
+                        margin: 0;
+                    }
+                }
+            }
+        }
+
+        .gender {
+            margin-top: 25px;
+        }
+
+        .language {
+            .content {
+                display: flex;
+
+                .left {
+                    width: 50%;
+
+                    .language__dropdown {
+                        width: 100%;
+                    }
+                }
+
+                .right {
+                    margin-left: 15px;
+                }
+
+            }
+
+        }
+
+        .dropdowns {
+            display: flex;
+            align-items: center;
+            margin-top: 25px;
+
+            .select {
+                width: 40%;
+
+                .network {
+                    width: 100%;
+                }
+            }
+
+            .url {
+                margin-left: 15px;
+
+                width: 60%;
+
+                .field {
+                    width: 100%;
+                    margin-bottom: 0;
+                }
+            }
+
+        }
+
+        .action_button {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            margin-top: 25px;
+
+            .label {
+                margin-bottom: 0;
+                margin-left: 15px;
+            }
+        }
+
+        .rss {
+            margin-top: 15px;
+
+            .field {
+                margin-bottom: 0;
+            }
+        }
+
+        .interests {
+            display: flex;
+            align-items: center;
+
+            .left {
+                width: 50%;
+            }
+
+            .right {
+                width: 50%;
+                margin-left: 15px;
+            }
+        }
+    }
+
+    .save-btn {
+        border-radius: 9px;
+        color: $white;
+        font-weight: 500;
+        font-size: 16px;
+        padding: 14px 22px;
+        margin-top: 30px;
+    }
+
+    .checkbox {
+        display: flex;
+        align-items: center;
+        margin-bottom: 25px;
+
+        .checkbox-label {
+            font-size: 14px;
+            font-weight: 400;
+            color: $black;
+        }
+    }
+
+    .autocomplete {
+        margin-top: 25px;
+    }
+
+    .language {
+        margin-top: 25px;
+    }
+}

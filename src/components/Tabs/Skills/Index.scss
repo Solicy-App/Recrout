@@ -1,0 +1,56 @@
+@import '../../../assets/variables/colors.scss';
+
+.skills__block {
+    padding-bottom: 15px;
+}
+
+.tab__content-skill {
+    border-radius: 40px;
+    background-color: $body;
+    padding: 10px;
+    margin-top: 15px;
+    flex-direction: column;
+    font-size: 14px;
+    margin-right: 18px;
+    margin-bottom: 18px;
+    color: $dark-purple;
+    font-weight: 400;
+
+    &__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        &-title {
+            font-size: 20px;
+            color: $black;
+            font-weight: 600;
+        }
+
+        &__actions {
+            display: flex;
+            align-items: center;
+
+            &-btn {
+                margin-left: 10px;
+            }
+        }
+    }
+
+    &__content {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        margin-top: 15px;
+        padding-bottom: 15px;
+
+        &-skill {
+            margin-right: 15px;
+            margin-bottom: 15px;
+            padding: 15px;
+            border-radius: 40px;
+            background-color: $body;
+            color: $purple;
+        }
+    }
+}

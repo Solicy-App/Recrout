@@ -1,0 +1,115 @@
+@import '../../../assets/variables/colors.scss';
+
+.tab {
+    margin-top: 20px;
+
+    &.experience {
+        flex-direction: column;
+    }
+
+    &__education {
+        width: 50%;
+    }
+
+    &__top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__education {
+        height: 194px;
+
+        &:last-child {
+            margin-left: 15px;
+        }
+
+        &.education {
+            .tab__content__header-title {
+                color: $black;
+            }
+        }
+
+    }
+
+    &__content {
+        max-width: 400px;
+
+        &__header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            &-title {
+                color: $purple;
+                font-size: 18px;
+                font-weight: 600;
+            }
+
+            &-years {
+                color: $black;
+                opacity: 0.8;
+                font-size: 14px;
+            }
+        }
+
+        &__desc {
+            max-width: 350px;
+            margin-bottom: 12px;
+
+            &-text {
+                color: $black;
+                opacity: 0.8;
+                font-size: 14px;
+            }
+
+            margin-top: 7px;
+            margin-bottom: 12px;
+        }
+
+        &__about {
+            display: flex;
+            align-items: center;
+            width: 340px;
+
+            .item {
+                margin-right: 24px;
+            }
+        }
+    }
+
+    &__bottom {
+        margin-top: 15px;
+
+        .education {
+            .tab__content__header-title {
+                color: $black;
+            }
+        }
+
+        &__content {
+            .tab__content {
+                max-width: 96%;
+            }
+
+            &__items {
+                display: flex;
+                flex-direction: column;
+
+                &-title {
+                    font-size: 18px;
+                    color: $black;
+                    display: block;
+                    margin-bottom: 7px;
+                    font-weight: 500;
+                }
+
+                &-desc {
+                    font-size: 14px;
+                    color: $black;
+                    font-weight: 400;
+                }
+            }
+        }
+    }
+}

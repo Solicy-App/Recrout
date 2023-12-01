@@ -1,0 +1,27 @@
+@import '../../assets/variables/colors.scss';
+
+.profile {
+    position: relative;
+
+    &__dot {
+        position: absolute;
+        left: 0;
+        top: 0;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        display: block;
+        background-color: $green;
+        outline: 1px solid $white;
+        color: $white;
+        transform: translateX(-7px);
+
+        &-count {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 12px;
+        }
+    }
+}

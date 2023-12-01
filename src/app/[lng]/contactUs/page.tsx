@@ -1,74 +1,56 @@
 'use client';
-
+import React, { FC } from 'react';
+import { Form, Formik, FormikHelpers } from 'formik';
 import { IMessage } from '@/core/interface/contact';
-import { NextPage } from 'next';
-import { ChangeEvent, useState } from 'react';
-import { resetForm } from '@/utils/reset-form';
-import { handleInputChange } from '@/helpers/inputHandler';
 import { formDataConverter } from '@/helpers/stateToFormData';
+import { InputType } from '@/core/enum/inputType';
+import { useTranslation } from '@/app/i18n/client';
+import FormField from '@/components/FormField/Index';
+import { ILanguage } from '@/core/interface/language';
+import { initialValues, validation } from './form';
 import { ContactService } from '../../../../services/contact/contact';
 import './index.scss';
 
-const ContactUs: NextPage = (): JSX.Element => {
-  const [contact, setContact] = useState<IMessage>({
-    email: '',
-    message: '',
-    name: '',
-    phone: '',
-  });
-
-  const handleInput = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
-    handleInputChange(e, setContact);
-  };
-
-  const handleSubmit = async (e: React.FormEvent): Promise<void> => {
-    e.preventDefault();
-    const contactForm = formDataConverter(contact)
+const ContactUs: FC<ILanguage> = ({ params }): JSX.Element => {
+  const { t } = useTranslation(params.lng, 'common');
+  const handleSubmit = async (
+    values: IMessage,
+    e: FormikHelpers<IMessage>,
+  ): Promise<void> => {
+    const contactForm = formDataConverter(values);
     await ContactService.sendMessage(contactForm);
-    setContact({ ...resetForm(contact) });
+    e.resetForm();
   };
 
   return (
-      <form className="contact" onSubmit={handleSubmit}>
-        <label htmlFor="name">Name:</label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          placeholder="name"
-          onChange={handleInput}
-          value={contact.name}
+    <Formik
+      initialValues={initialValues}
+      validationSchema={validation(t)}
+      onSubmit={(values, FormEvent) => handleSubmit(values, FormEvent)}
+    >
+      <Form>
+        <FormField
+          fieldName="name"
+          placeholder={t('first_name')}
+          type={InputType.text}
         />
-        <label htmlFor="email">Email:</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          placeholder="email"
-          onChange={handleInput}
-          value={contact.email}
+        <FormField
+          fieldName="email"
+          placeholder={t('email')}
+          type={InputType.email}
         />
-        <label htmlFor="phone">Phone:</label>
-        <input
-          type="phone"
-          id="phone"
-          name="phone"
-          placeholder="phone"
-          onChange={handleInput}
-          value={contact.phone}
+        <FormField
+          fieldName="phone"
+          placeholder={t('phone')}
+          type={InputType.text}
         />
-        <label htmlFor="message">Message:</label>
-        <textarea
-          id="message"
-          name="message"
-          placeholder="message"
-          onChange={handleInput}
-          value={contact.message}
+        <FormField
+          fieldName="message"
+          placeholder={t('message')}
+          type={InputType.text}
         />
-        <button onClick={handleSubmit} type="submit" className="submit-button">
-          Contact us
-        </button>
-      </form>
+      </Form>
+    </Formik>
   );
 };
 

@@ -2,6 +2,14 @@ import Axios, { AxiosInstance } from 'axios';
 import { ApiError, ApiHeaders, IApiBase, ID } from './types';
 import environments from '@/utils/environment';
 
+type ErrorType = {
+  response: {
+    status: number;
+    data: {
+      error: string
+      }
+  }
+}
 export default class ApiBase<T> implements IApiBase<T> {
   public axiosInstance: AxiosInstance;
   protected baseApiUrl: string;
@@ -11,21 +19,20 @@ export default class ApiBase<T> implements IApiBase<T> {
     this.axiosInstance = Axios.create({
       baseURL: this.baseApiUrl,
       headers: {
-        'Content-Type': 'multipart/form-data',
         Accept: 'application/json',
         ...headers,
       },
     });
   }
 
-  protected isError(response: any): boolean {
+  protected isError(response: object): boolean {
     return 'statusCode' in response && 'message' in response;
   }
 
-  protected createError(e: any): ApiError {
+  protected createError(e: ErrorType | unknown): ApiError {
     return {
-      statusCode: e?.response?.status,
-      errorMessage: e?.response?.data?.error ?? 'Server Error',
+      statusCode: (e as ErrorType)?.response?.status,
+      errorMessage: (e as ErrorType)?.response?.data?.error ?? 'Server Error',
     };
   }
 
@@ -54,7 +61,7 @@ export default class ApiBase<T> implements IApiBase<T> {
   public async postAsync(
     url: string = this.baseApiUrl,
     values?: T,
-    headers?: any,
+    headers?: Record<string, string>,
   ): Promise<T | ApiError> {
     try {
       const { data } = await this.axiosInstance.post(`${url}`, values, {
@@ -90,7 +97,7 @@ export default class ApiBase<T> implements IApiBase<T> {
     id: ID,
     values: T,
     url: string = this.baseApiUrl,
-    headers?: any,
+    headers?: Record<string, string>,
   ): Promise<T | ApiError> {
     try {
       const { data } = await this.axiosInstance.put(`${url}/${id}`, values, {

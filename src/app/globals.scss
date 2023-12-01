@@ -1,7 +1,8 @@
-@import '../styles/utils/reset';
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+@import '../styles/utils/reset';
+@import '../assets/variables/colors.scss';
 
 * {
   box-sizing: border-box;
@@ -13,6 +14,7 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
+  background-color: $body;
 }
 
 a {

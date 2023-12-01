@@ -1,10 +1,10 @@
 ## Prepare
 
 Install all project dependencies - `npm install`
-Install Husky to enable the pre-commit hooks - `npm run prepare`
+
 ## Required version of node js
 
-``Node js`` version should be ``20`` or higher
+``Node js`` version should be ``16`` or higher
 
 ## Available Scripts
 
@@ -42,7 +42,7 @@ For them to work as they should, you will need to:
 Install Cypress by running `npm install --save-dev cypress`.
 Run Cypress in interactive mode with `npm run cypress:open`.
 Run Cypress tests in headless mode with `npm run cypress:run`.
-Run JEST unit tests using `npm run test` (It will run itself when trying to commit, push something to repo with husky).
+Run JEST unit tests using `npm run test` (It will run itself when trying to commit, push something to repo).
 
 ## Folder Structure:
 

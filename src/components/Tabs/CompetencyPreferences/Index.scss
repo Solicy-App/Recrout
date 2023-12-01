@@ -1,0 +1,174 @@
+@import '../../../assets/variables/colors.scss';
+
+.tab {
+    margin-top: 15px;
+    display: flex;
+
+    &__pref {
+        position: relative;
+        padding: 25px;
+        width: 30%;
+        border-radius: 6px;
+        background-color: $white;
+
+        .buttons {
+            transform: translate(5px, -10px);
+        }
+
+        &-edit {
+            position: absolute !important;
+            right: 0;
+            top: 0;
+            transform: translate(-20px, 20px);
+        }
+
+        &-title {
+            color: $black;
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        &__item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 23px;
+
+            &-title {
+                color: $black;
+                font-size: 14px;
+                font-weight: 600;
+            }
+
+            &-value {
+                color: $black;
+                opacity: 0.8;
+                font-size: 14px;
+                font-weight: 400;
+            }
+        }
+    }
+
+    &__comp {
+        width: 70%;
+        margin-left: 15px;
+        background-color: $white;
+        border-radius: 6px;
+        padding: 25px;
+
+        &-title {
+            color: $black;
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        &__head {
+            display: flex;
+            align-items: center;
+            border-bottom: 4px solid $border;
+            border-radius: 4px;
+            margin-top: 26px;
+
+            &__title {
+                position: relative;
+                width: 50%;
+                text-align: center;
+                cursor: pointer;
+
+                &:hover {
+                    .tab__comp__head__title-line {
+                        width: 100%;
+                    }
+                }
+
+                &.active {
+                    .tab__comp__head__title-line {
+                        width: 100%;
+                    }
+                }
+
+                &-title {
+                    font-size: 16px;
+                    font-weight: 400;
+                    color: $black;
+                }
+
+                &-line {
+                    transition: all .5s;
+                    width: 0;
+                    height: 3px;
+                    border-radius: 4px;
+                    background-color: $purple;
+                    display: block;
+                    transform: translateY(3px);
+                }
+            }
+        }
+
+        &__tab {
+            display: flex;
+            justify-content: space-between;
+            padding-top: 22px;
+            height: 272px;
+
+            &__left {
+                width: 30%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                &__options {
+                    &__option {
+                        display: flex;
+                        align-items: center;
+                        margin-bottom: 20px;
+
+                        &-dot {
+                            display: block;
+                            width: 5px;
+                            height: 5px;
+                            background-color: $purple;
+                            border-radius: 50%;
+                        }
+
+                        &-title {
+                            background-color: $white;
+                            color: #2a2a2af3;
+                            font-size: 14px;
+                            font-weight: 300;
+                            transform: translateX(-7px);
+                            transition: all .5s;
+                            cursor: pointer;
+
+                            &.active {
+                                color: $purple;
+                                transform: translateX(10px);
+                            }
+
+                            &:hover {
+                                color: $purple;
+                                transform: translateX(10px);
+                            }
+                        }
+                    }
+                }
+            }
+
+            &__right {
+                width: 70%;
+                position: relative;
+
+                .edit {
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                    transform: translate(-6px, 10px);
+                }
+
+                canvas {
+                    margin: auto;
+                }
+            }
+        }
+    }
+}

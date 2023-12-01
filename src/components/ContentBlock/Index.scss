@@ -1,0 +1,27 @@
+@import '../../assets/variables/colors.scss';
+
+.block {
+    padding: 20px;
+    border-radius: 6px;
+    background-color: $white;
+
+    &__header {
+        margin-bottom: 15px;
+        display: flex;
+        justify-content: space-between;
+
+        &-title {
+            font-size: 20px;
+            color: $black;
+            font-weight: 600;
+        }
+
+        .buttons {
+            display: flex;
+
+            .edit {
+                margin-left: 15px;
+            }
+        }
+    }
+}

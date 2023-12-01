@@ -1,63 +1,83 @@
-@import '../../styles/utils/breakpoints';
+@import '../../assets/variables/colors.scss';
+
+body {
+  height: 100vh;
+}
+
+.profile {
+  margin-right: 10px;
+}
 
 .navbar {
-  background-color: #333;
-  color: white;
-  padding: 10px 0;
-  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 95px;
+  background-color: $white;
+  margin-bottom: 25px;
+  padding: 20px 40px;
 
-  &-container {
+  &__left {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-  }
+    transform: translateY(15px);
+    z-index: 9;
 
-  &-logo {
-    font-size: 24px;
-    font-weight: bold;
-    text-decoration: none;
-    color: white;
-  }
-
-  &-menu {
-    list-style: none;
-    padding: 0;
-    display: flex;
-
-    &.mobile-sized {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: calc(100% - 30px);
-      height: 100%;
-      padding: 40px 20px;
-      background-color: #333;
-      display: none;
-    }
-
-    &.menu-opened {
-      display: block;
-    }
-  }
-
-  &-item {
-    margin-right: 20px;
-    a {
-      text-decoration: none;
-      color: white;
-      transition: color 0.3s ease;
+    &-btn {
+      min-width: 108px;
+      height: 47px;
+      border-radius: 9px;
+      background-color: $purple;
+      color: $white;
+      border-color: $purple;
 
       &:hover {
-        color: #f0f0f0;
+        color: $purple;
+        border: 1px solid $purple;
       }
     }
 
-    @include media-medium {
-      margin-right: 0;
-      margin-bottom: 20px;
+    &__dropdown {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      width: 172px;
+      margin-left: 53px;
 
-      a {
-        font-size: 20px;
+      &-btn {
+        cursor: pointer;
+        width: 100%;
+        display: flex;
+        align-items: center;
+      }
+
+      &__content {
+        padding: 20px 27px;
+        width: 395px;
+        height: 293px;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        border-radius: 5px;
+        background: $white;
+        box-shadow: 0px 1px 12px 0px rgba(141, 156, 174, 0.25);
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        transform: translateY(312px);
+
+        &-cards {
+          margin-bottom: 20px;
+        }
+      }
+
+      &-arrow {
+        transform: rotate(180deg);
+
+        &.active {
+          transform: rotate(0deg);
+        }
       }
     }
   }

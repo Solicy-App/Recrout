@@ -3,21 +3,21 @@ import ApiBase from '../base/apiBase';
 export class AuthService {
   private static apiBase = new ApiBase();
 
-  public static async signIn(creedentials: FormData): Promise<void> {
+  public static async signIn(email: string, password: string): Promise<void> {
     try {
-      const res = await this.apiBase.postAsync(
-        `/en/auth/signin/`,
-        creedentials,
-      );
+      const res = await this.apiBase.postAsync(`/account/auth/login/`, {
+        email,
+        password,
+      });
       console.log(res);
     } catch (error) {
       console.log(error);
     }
   }
-  public static async signUp(creedentials: FormData): Promise<void> {
+  public static async signUp(creedentials: FormData | any): Promise<void> {
     try {
       const res = await this.apiBase.postAsync(
-        `/en/candidate/signup/?r=${Math.random()}`,
+        `/account/auth/register/`,
         creedentials,
       );
       console.log(res);
@@ -28,7 +28,7 @@ export class AuthService {
   public static async resetPassword(creedentials: FormData): Promise<void> {
     try {
       const res = await this.apiBase.postAsync(
-        `/en/auth/password/reset/?r=${Math.random()}`,
+        `account/auth/password/reset/`,
         creedentials,
       );
       console.log(res);
@@ -37,12 +37,9 @@ export class AuthService {
     }
   }
 
-  public static async passwordDone(creedentials: FormData): Promise<void> {
+  public static async getAccount(): Promise<void> {
     try {
-      const res = await this.apiBase.postAsync(
-        `/en/auth/password/reset/done/?r=${Math.random()}`,
-        creedentials,
-      );
+      const res = await this.apiBase.getAsync(`/account/me`);
       console.log(res);
     } catch (error) {
       console.log(error);

@@ -19,7 +19,7 @@ export interface IApiBase<T> {
     id: ID,
     values: T,
     url: string,
-    headers: any,
+    headers: Record<string, string>,
   ) => Promise<T | ApiError>;
 
   putAllAsync(values: T, url: string): Promise<T | ApiError>;

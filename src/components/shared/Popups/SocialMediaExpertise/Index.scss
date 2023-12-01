@@ -1,0 +1,106 @@
+@import '../../../../assets/variables/colors.scss';
+
+.medias {
+    &_existing {
+        height: 300px;
+        overflow-y: auto;
+
+        &-trash {
+            padding: 4px;
+            margin-left: 10px;
+            margin-top: 37px;
+        }
+
+        &__media {
+            display: flex;
+            align-items: center;
+            margin-top: 25px;
+
+            &__left {
+                display: flex;
+                flex-direction: column;
+
+                &-label {
+                    font-weight: 400;
+                    font-size: 14px;
+                    color: $black;
+                    display: block;
+                    margin-bottom: 5px;
+                }
+
+                &-social {
+                    width: 331px;
+                    height: 40px;
+                    border: 1px solid $border;
+                    background-color: $body;
+                    border-radius: 3px;
+                    padding: 12px 16px;
+                    color: $storm-gray;
+                    font-size: 14px;
+                    margin-right: 44px;
+                }
+            }
+
+            &__middle {
+                display: flex;
+                flex-direction: column;
+
+                &-label {
+                    font-weight: 400;
+                    font-size: 14px;
+                    color: $black;
+                    display: block;
+                    margin-bottom: 5px;
+                }
+
+                .level {
+                    .dots {
+                        justify-content: space-between;
+                    }
+                }
+            }
+        }
+    }
+
+    &__add {
+        .cont {
+            display: flex;
+            margin-top: 25px;
+            justify-content: space-between;
+
+            .left {
+                .social_dropdown {
+                    width: 331px;
+                    background-color: $body;
+                    border: none;
+                    height: 40px;
+
+                    fieldset {
+                        border: 1px solid $border;
+                    }
+                }
+            }
+
+            .right {
+                width: 197px;
+
+                .level {
+                    margin-top: 25px;
+                }
+
+                .dots {
+                    justify-content: space-between;
+                }
+            }
+        }
+    }
+
+    .save-btn {
+        width: 100%;
+        height: 47px;
+        border-radius: 9px;
+        background-color: $purple;
+        color: $white;
+        margin-top: 30px;
+    }
+}

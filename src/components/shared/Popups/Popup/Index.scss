@@ -1,0 +1,62 @@
+@import '../../../../assets/variables/colors.scss';
+
+.popup {
+    background-color: $backgdrop;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 9;
+
+    &__title {
+        display: block;
+        text-align: center;
+        font-size: 24px;
+        color: $black;
+        font-weight: 600;
+    }
+
+    &__desc {
+        color: $black;
+        text-align: center;
+        max-width: 571px;
+        font-size: 16px;
+        font-weight: 400;
+        margin: auto;
+        margin-top: 15px;
+    }
+
+    &__content {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+
+        &__main {
+            width: 50%;
+            min-width: 365px;
+            max-width: 630px;
+            ;
+            border-radius: 21px;
+            background-color: $white;
+            padding: 30px;
+            position: relative;
+
+            &.expertise {
+                height: 582px;
+            }
+
+            &-close {
+                position: absolute;
+                right: 0;
+                top: 0;
+                transform: translate(-30px, 24px);
+                cursor: pointer;
+            }
+        }
+
+    }
+}

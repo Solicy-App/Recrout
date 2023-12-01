@@ -1,0 +1,261 @@
+@import '../../../assets/variables/colors.scss';
+
+.about {
+    display: flex;
+    margin-top: 20px;
+    border-radius: 6px;
+
+    .react-share__ShareButton {
+        margin-top: 15px;
+        border-radius: 9px;
+        width: 236px;
+        height: 57px;
+        background-color: $sky-blue !important;
+        color: $white !important;
+        font-weight: 500;
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img {
+            margin-right: 15px;
+        }
+
+        &:hover {
+            background-color: $sky-blue;
+        }
+
+        .btn-icon {
+            margin-right: 10px;
+        }
+    }
+
+    &__left {
+        position: relative;
+        border-radius: 6px;
+        background-color: $white;
+        padding: 25px;
+        width: 30%;
+
+        &-title {
+            color: $black;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        &-edit {
+            position: absolute !important;
+            right: 0;
+            top: 0;
+            transform: translate(-24px, 23px);
+        }
+
+        &__info {
+            margin: 15px 0;
+            display: flex;
+            flex-direction: column;
+
+            &-name {
+                font-size: 18px;
+                color: $black;
+                font-weight: 500;
+                margin-bottom: 6px;
+            }
+
+            &-desc {
+                color: $black;
+                opacity: 0.5;
+            }
+        }
+
+        &__more {
+            display: flex;
+            flex-direction: column;
+
+            &__item {
+                display: flex;
+                align-items: center;
+                margin-bottom: 10px;
+
+                &-icon {
+                    width: 26px;
+                    height: 26px;
+                    display: block;
+                    background-color: #EFEBF4;
+                    position: relative;
+                    margin-right: 10px;
+                    border-radius: 50%;
+
+                    img {
+                        position: absolute;
+                        left: 50%;
+                        top: 50%;
+                        transform: translate(-50%, -50%);
+                    }
+                }
+
+                &-value {
+                    color: $black;
+                    font-size: 12px;
+                }
+            }
+
+
+        }
+    }
+
+    &__right {
+        width: 70%;
+        margin-left: 15px;
+        height: 203px;
+
+        &__top {
+            padding: 25px 40px;
+            background-color: $white;
+            border-radius: 6px;
+
+            &__left {
+                display: flex;
+                flex-direction: column;
+
+                &-title {
+                    color: $black;
+                    font-size: 20px;
+                    font-weight: 600;
+                }
+
+                &-desc {
+                    font-size: 14px;
+                    font-weight: 400;
+                    color: $black;
+                    opacity: 0.5;
+                    margin: 15px 0;
+                }
+            }
+
+            &__content {
+                display: flex;
+                justify-content: space-between;
+            }
+
+            &__radar {
+                width: 368px;
+                position: relative;
+
+                &-action {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                }
+            }
+
+            &__share {
+                display: flex;
+                justify-content: space-between;
+
+                &-button {
+                    margin-top: 15px;
+                    border-radius: 9px;
+                    width: 236px;
+                    height: 57px;
+                    background-color: $sky-blue;
+                    color: $white;
+                    font-weight: 500;
+                    font-size: 16px;
+
+                    &:hover {
+                        background-color: $sky-blue;
+
+                    }
+
+                    .btn-icon {
+                        margin-right: 10px;
+                    }
+                }
+            }
+        }
+
+        &__bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+
+            &__left {
+                position: relative;
+                padding: 25px;
+                background-color: $white;
+                border-radius: 6px;
+                width: 50%;
+                height: 203px;
+
+                &-title {
+                    color: $black;
+                    font-size: 20px;
+                    font-weight: 600;
+                }
+
+                &__info {
+                    &__header {
+                        margin-top: 12px;
+                        display: flex;
+                        justify-content: space-between;
+
+                        &-title {
+                            color: $purple;
+                            font-size: 16px;
+                            font-weight: 600;
+                        }
+
+                        &-year {
+                            color: $black;
+                            font-size: 14px;
+                            font-weight: 400;
+                        }
+                    }
+
+                    &-desc {
+                        font-size: 12px;
+                        font-weight: 400;
+                        color: $black;
+                        width: 80%;
+                        margin-top: 10px;
+                    }
+
+                    &-edit {
+                        position: absolute !important;
+                        right: 0;
+                        top: 0;
+                        transform: translate(-22px, 15px);
+
+                    }
+                }
+            }
+
+            &__right {
+                width: 50%;
+                margin-left: 15px;
+                background-color: $white;
+                border-radius: 6px;
+                position: relative;
+                padding: 25px;
+
+                &-title {
+                    color: $black;
+                    font-size: 20px;
+                    font-weight: 600;
+                }
+
+                &-edit {
+                    position: absolute !important;
+                    right: 0;
+                    top: 0;
+                    transform: translate(-22px, 15px);
+
+                }
+            }
+        }
+    }
+}

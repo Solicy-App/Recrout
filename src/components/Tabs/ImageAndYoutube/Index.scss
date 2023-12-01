@@ -1,0 +1,47 @@
+@import '../../../assets/variables/colors.scss';
+
+.tab {
+    margin-top: 15px;
+    display: flex;
+
+    &__photos {
+        background-color: $white;
+        border-radius: 6px;
+        width: 48%;
+        margin-right: 15px;
+        padding: 20px;
+
+        &:last-child {
+            width: 60%;
+            margin: 0;
+        }
+
+        &__header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            &-title {
+                color: $black;
+                font-size: 20px;
+            }
+        }
+
+        &__content {
+            margin-top: 15px;
+            display: flex;
+            align-items: center;
+
+            &-photo {
+                margin-right: 15px;
+            }
+
+            &-video {
+                margin-right: 20px;
+                margin-bottom: 20px;
+                width: 266px;
+                height: 156px;
+            }
+        }
+    }
+}

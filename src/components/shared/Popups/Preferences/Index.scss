@@ -1,0 +1,110 @@
+@import '../../../../assets/variables/colors.scss';
+
+/* width */
+.fields::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+.fields::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 1px grey;
+    border-radius: 10px;
+}
+
+/* Handle */
+.fields::-webkit-scrollbar-thumb {
+    background: $purple;
+    border-radius: 10px;
+}
+
+.preferences {
+    .label {
+        font-size: 14px;
+        font-weight: 400;
+        display: block;
+        color: $black;
+        margin-bottom: 5px;
+    }
+
+    .dropdown {
+        fieldset {
+            border: 0
+        }
+
+        &.preferences {
+            margin-bottom: 20px;
+        }
+    }
+
+    form {
+        margin-top: 25px;
+
+        .MuiInputBase-input {
+            transform: translateY(-7px);
+        }
+
+        .fields {
+            height: 500px;
+            overflow-y: auto;
+            margin-bottom: 25px;
+            padding-right: 10px;
+        }
+
+        .save {
+            background-color: $purple;
+            color: $white;
+            text-align: center;
+            font-weight: 500;
+            font-size: 16px;
+            width: 100%;
+            border-radius: 9px;
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 25px;
+            position: relative;
+
+            .location {
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                z-index: 1;
+                transform: translate(-13px, -12px);
+            }
+
+            .box {
+                fieldset {
+                    border: none;
+
+                    div {
+                        justify-content: space-between;
+
+                        .MuiFormControlLabel-label {
+                            font-size: 14px;
+                            font-weight: 400;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.MuiOutlinedInput-root {
+    height: 40px;
+}
+
+.MuiInputBase-root {
+    background-color: $body;
+    border: 1px solid $border;
+}
+
+.MuiOutlinedInput-notchedOutline {
+    border: none;
+}
+
+.css-1glvl0p-MuiButtonBase-root-MuiIconButton-root-MuiAutocomplete-clearIndicator {
+    transform: translateX(-25px);
+}

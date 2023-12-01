@@ -1,53 +1,54 @@
 'use client';
-import { NextPage } from 'next';
-import { useState, ChangeEvent } from 'react';
+import React, { FC } from 'react';
+import { Form, Formik, FormikHelpers } from 'formik';
 import { IRequestDemo } from '@/core/interface/requestDemo';
-import { handleInputChange } from '@/helpers/inputHandler';
 import { RequestDemoService } from '../../../../services/requestDemo/requestDemo';
 import { formDataConverter } from '@/helpers/stateToFormData';
-import { resetForm } from '@/utils/reset-form';
+import { validation, initialValues } from './form';
+import { InputType } from '@/core/enum/inputType';
+import { useTranslation } from '@/app/i18n/client';
+import FormField from '@/components/FormField/Index';
+import Button from '@/components/Button/Index';
+import { ILanguage } from '@/core/interface/language';
 import './index.scss';
 
-const RequestDemo: NextPage = (): JSX.Element => {
-  const [request, setRequest] = useState<IRequestDemo>({
-    email: '',
-    name: '',
-    phone: '',
-  });
+const RequestDemo: FC<ILanguage> = ({ params }): JSX.Element => {
+  const { t } = useTranslation(params.lng, 'common');
 
-  const handleSubmit = async (e: React.FormEvent): Promise<void> => {
-    e.preventDefault();
-    const formData = formDataConverter(request);
+  const handleSubmit = async (
+    values: IRequestDemo,
+    e: FormikHelpers<IRequestDemo>,
+  ): Promise<void> => {
+    const formData = formDataConverter(values);
     await RequestDemoService.requestDemo(formData);
-    resetForm(request);
-  };
-
-  const handleInput = (e: ChangeEvent<HTMLInputElement>): void => {
-    handleInputChange(e, setRequest);
+    e.resetForm();
   };
 
   return (
-    <form className="request" onSubmit={handleSubmit}>
-      <input
-        placeholder="name"
-        name="name"
-        type="text"
-        onChange={handleInput}
-      />
-      <input
-        placeholder="email"
-        name="email"
-        type="email"
-        onChange={handleInput}
-      />
-      <input
-        placeholder="phone"
-        name="phone"
-        type="text"
-        onChange={handleInput}
-      />
-      <button>Submit</button>
-    </form>
+    <Formik
+      initialValues={initialValues}
+      validationSchema={validation(t)}
+      onSubmit={(values, FormEvent) => handleSubmit(values, FormEvent)}
+    >
+      <Form>
+        <FormField
+          fieldName="name"
+          type={InputType.text}
+          placeholder={t('name')}
+        />
+        <FormField
+          fieldName="email"
+          type={InputType.email}
+          placeholder={t('email')}
+        />
+        <FormField
+          fieldName="phone"
+          type={InputType.text}
+          placeholder={t('phone')}
+        />
+        <Button title="sign_up" type="submit" className="submit-button"/>
+      </Form>
+    </Formik>
   );
 };
 
