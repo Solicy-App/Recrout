@@ -2,7 +2,6 @@
 const nextConfig = {
   reactStrictMode: false,
   basePath: '',
-  distDir: 'build',
   eslint: {
     ignoreDuringBuilds: true,
   },
